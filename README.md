@@ -1,1 +1,1 @@
-# [sunnyxxyµÄStarRatingËã·¨](https://github.com/sunnyxxy/Star-Rating-Rebirth)C#°æ
+# [sunnyxxyçš„StarRatingç®—æ³•](https://github.com/sunnyxxy/Star-Rating-Rebirth) C#ç‰ˆ
