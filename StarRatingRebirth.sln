@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35919.96
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StarRatingRebirth", "StarRatingRebirth\StarRatingRebirth.csproj", "{DAB58DF6-3A26-D3EF-6DFB-705AA9922101}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StarRatingRebirth.Tests", "StarRatingRebirth.Tests\StarRatingRebirth.Tests.csproj", "{365E5371-F300-1711-2B3E-8C0C199D314F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DAB58DF6-3A26-D3EF-6DFB-705AA9922101}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAB58DF6-3A26-D3EF-6DFB-705AA9922101}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAB58DF6-3A26-D3EF-6DFB-705AA9922101}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAB58DF6-3A26-D3EF-6DFB-705AA9922101}.Release|Any CPU.Build.0 = Release|Any CPU
+		{365E5371-F300-1711-2B3E-8C0C199D314F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{365E5371-F300-1711-2B3E-8C0C199D314F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{365E5371-F300-1711-2B3E-8C0C199D314F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{365E5371-F300-1711-2B3E-8C0C199D314F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D3C67ED7-D859-4696-A7B6-D59EA281A91F}
+	EndGlobalSection
+EndGlobal
