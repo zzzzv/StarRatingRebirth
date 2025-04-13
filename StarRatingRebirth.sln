@@ -7,6 +7,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StarRatingRebirth", "StarRa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StarRatingRebirth.Tests", "StarRatingRebirth.Tests\StarRatingRebirth.Tests.csproj", "{365E5371-F300-1711-2B3E-8C0C199D314F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StarRatingRebirth.Console", "StarRatingRebirth.Console\StarRatingRebirth.Console.csproj", "{68D85E13-A447-4959-B753-97ED67AF9C7E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "解决方案项", "解决方案项", "{9FA3D6BD-1EC1-3BA5-80CB-CE02773A58D5}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +29,10 @@ Global
 		{365E5371-F300-1711-2B3E-8C0C199D314F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{365E5371-F300-1711-2B3E-8C0C199D314F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{365E5371-F300-1711-2B3E-8C0C199D314F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68D85E13-A447-4959-B753-97ED67AF9C7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68D85E13-A447-4959-B753-97ED67AF9C7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68D85E13-A447-4959-B753-97ED67AF9C7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68D85E13-A447-4959-B753-97ED67AF9C7E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

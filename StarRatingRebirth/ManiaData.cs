@@ -32,9 +32,9 @@ public struct Note(int key, int head, int tail)
 
 public class ManiaData
 {
-    public List<Note> Notes { get; private set; } = [];
-    public int CS { get; private set; }
-    public double OD { get; private set; }
+    public List<Note> Notes { get; set; } = [];
+    public int CS { get; set; }
+    public double OD { get; set; }
     public ManiaData ChangeRate(double r)
     {
         var data = new ManiaData

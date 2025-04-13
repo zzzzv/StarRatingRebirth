@@ -4,13 +4,8 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <OutputType>Exe</OutputType>
-
-    <PublishSingleFile>true</PublishSingleFile>
-    <SelfContained>false</SelfContained>
-    <PublishReadyToRun>false</PublishReadyToRun>
-    <DebugType>none</DebugType>
-    <PublishDir>..\publish</PublishDir>
+    <OutputType>Library</OutputType>
+    <PublishDir>bin\publish</PublishDir>
   </PropertyGroup>
 
 </Project>
