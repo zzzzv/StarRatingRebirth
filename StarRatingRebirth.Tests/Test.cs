@@ -16,7 +16,7 @@ public class Test
     }
 
     [Theory]
-    [InlineData("Data/1.osu", 6.617692)]
+    [InlineData("Data/1.osu", 6.617031)]
     public void SR(string filePath, double expectedSR)
     {
         var data = ManiaData.FromFile(filePath);

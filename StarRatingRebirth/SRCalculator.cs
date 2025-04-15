@@ -2,7 +2,7 @@
 
 public class SRCalculator
 {
-    public static string Version = "2025/03/17";
+    public static string Version = "2025/04/15";
 
     internal static void PreProcess(ManiaData data, out double x, out int K, out int T,
         out Note[] noteSeq, out Note[][] noteSeqByCol, out Note[] lnSeq, out Note[] tailSeq, out Note[][] lnSeqByCol)
@@ -516,11 +516,11 @@ public class SRCalculator
                 double inc;
                 if (delta < 2 * x / 3)
                 {
-                    inc = (1 / delta) * Math.Pow(0.08 / x * (1 - 24 / x * Math.Pow(delta - x / 2, 2)), 1.0 / 4) * bVal * v;
+                    inc = (1 / delta) * Math.Pow(0.08 / x * (1 - 24 / x * Math.Pow(delta - x / 2, 2)), 1.0 / 4) * Math.Max(bVal, v);
                 }
                 else
                 {
-                    inc = (1 / delta) * Math.Pow(0.08 / x * (1 - 24 / x * Math.Pow(x / 6, 2)), 1.0 / 4) * bVal * v;
+                    inc = (1 / delta) * Math.Pow(0.08 / x * (1 - 24 / x * Math.Pow(x / 6, 2)), 1.0 / 4) * Math.Max(bVal, v);
                 }
 
                 for (int idx = leftIdx; idx < rightIdx; idx++)
