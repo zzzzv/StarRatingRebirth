@@ -9,11 +9,13 @@ on:
 jobs:
   build:
     runs-on: windows-latest
-    outputs:
-      version: ${{ steps.extract_version.outputs.version }}
+    permissions:
+      contents: write
 
     steps:
     - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
     
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
@@ -32,13 +34,6 @@ jobs:
     - name: Publish
       run: dotnet publish
       
-    - name: Upload artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: executable
-        path: StarRatingRebirth.Console/bin/publish/StarRatingRebirth.Console.exe
-        retention-days: 1
-
     - name: Extract version
       id: extract_version
       shell: pwsh
@@ -47,39 +42,18 @@ jobs:
         $version = $version.Trim()
         echo "version=$version" >> $env:GITHUB_OUTPUT
         echo "Version extracted: $version"
-  
-  release:
-    needs: build
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-
-    steps:
-    - uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
-    
-    - name: Download artifact
-      uses: actions/download-artifact@v4
-      with:
-        name: executable
-        path: ./artifact
     
     - name: Create tag
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git tag ${{ needs.build.outputs.version }}
-        git push origin ${{ needs.build.outputs.version }}
+        git tag ${{ steps.extract_version.outputs.version }}
+        git push origin ${{ steps.extract_version.outputs.version }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     
     - name: Create Release
-      uses: ncipollo/release-action@v1
+      uses: softprops/action-gh-release@v2
       with:
-        tag: ${{ needs.build.outputs.version }}
-        name: Release ${{ needs.build.outputs.version }}
-        body: |
-          Release version ${{ needs.build.outputs.version }}
-        token: ${{ secrets.GITHUB_TOKEN }}
-        artifacts: ./artifact/StarRatingRebirth.Console.exe
+        tag_name: ${{ steps.extract_version.outputs.version }}
+        files: ./StarRatingRebirth.Console/bin/publish/StarRatingRebirth.Console.exe
