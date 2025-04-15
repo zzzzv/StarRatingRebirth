@@ -2,6 +2,10 @@ using Newtonsoft.Json.Linq;
 
 namespace StarRatingRebirth.Tests;
 
+#pragma warning disable CS8618  // 不可为 null 的字段未初始化
+#pragma warning disable CS8601  // 可能的 null 引用赋值
+#pragma warning disable CS8602  // 解引用可能出现空引用
+#pragma warning disable CS8604  // 可能的 null 引用参数
 public class JsonData
 {
     public double x { get; }

@@ -9,6 +9,8 @@ on:
 jobs:
   build:
     runs-on: windows-latest
+    outputs:
+      version: ${{ steps.extract_version.outputs.version }}
 
     steps:
     - uses: actions/checkout@v4
@@ -35,36 +37,47 @@ jobs:
       with:
         name: executable
         path: StarRatingRebirth.Console/bin/publish/StarRatingRebirth.Console.exe
+        retention-days: 1
 
     - name: Extract version
       id: extract_version
       shell: pwsh
       run: |
-        $content = Get-Content -Path "StarRatingRebirth/SRCalculator.cs" -Raw
-        if ($content -match 'public static string Version = "([^"]+)"') {
-          $version = $matches[1]
-          echo "version=$version" >> $env:GITHUB_OUTPUT
-          echo "Version extracted: $version"
-        } else {
-          echo "Failed to extract version"
-          exit 1
-        }
+        $version = ./StarRatingRebirth.Console/bin/publish/StarRatingRebirth.Console.exe --version
+        $version = $version.Trim()
+        echo "version=$version" >> $env:GITHUB_OUTPUT
+        echo "Version extracted: $version"
+  
+  release:
+    needs: build
+    runs-on: ubuntu-latest
 
-    - name: Bump version and push tag
-      id: tag_bump
-      uses: anothrNick/github-tag-action@v1
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    
+    - name: Download artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: executable
+        path: ./artifact
+    
+    - name: Create tag
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git tag ${{ needs.build.outputs.version }}
+        git push origin ${{ needs.build.outputs.version }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        DEFAULT_BUMP: patch
-        CUSTOM_TAG: "${{ steps.extract_version.outputs.version }}"
-        WITH_V: false
-
+    
     - name: Create Release
       uses: ncipollo/release-action@v1
       with:
-        tag: ${{ steps.tag_bump.outputs.new_tag }}
-        name: Release ${{ steps.tag_bump.outputs.new_tag }}
+        tag: ${{ needs.build.outputs.version }}
+        name: Release ${{ needs.build.outputs.version }}
         body: |
-          Release version ${{ steps.tag_bump.outputs.new_tag }}
+          Release version ${{ needs.build.outputs.version }}
         token: ${{ secrets.GITHUB_TOKEN }}
-        artifacts: StarRatingRebirth.Console/bin/publish/StarRatingRebirth.Console.exe
+        artifacts: ./artifact/StarRatingRebirth.Console.exe

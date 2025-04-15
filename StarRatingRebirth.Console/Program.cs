@@ -6,12 +6,12 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        string versionStr = $" (algorithm version: {SRCalculator.Version})";
+        string versionStr = $" (algorithm version: {VersionInfo.AlgorithmVersion})";
         string creditStr = $"Star-Rating-Rebirth by [Crz]sunnyxxy{versionStr}";
 
         if (args.Contains("--version") || args.Contains("-V"))
         {
-            Console.WriteLine(creditStr);
+            Console.WriteLine(VersionInfo.Version);
             return;
         }
 
