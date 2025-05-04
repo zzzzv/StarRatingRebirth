@@ -6,6 +6,14 @@
     <Nullable>enable</Nullable>
     <OutputType>Library</OutputType>
     <PublishDir>bin\publish</PublishDir>
+
+    <PackageId>StarRatingRebirth</PackageId>
+    <Version>0.1.0</Version>
+    <Authors>zzzzv</Authors>
+    <Description>sunnyxxy's osu!mania StarRating algorithm</Description>
+    <PackageProjectUrl>https://github.com/zzzzv/StarRatingRebirth</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
 </Project>
