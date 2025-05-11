@@ -37,7 +37,7 @@ public static class Utils
         if (q <= x[0]) return 0.0;
         if (q >= x[^1]) return F[^1];
 
-        int i = Utils.SearchSortedLeft(x, q) - 1;
+        int i = SearchSortedLeft(x, q) - 1;
         return F[i] + f[i] * (q - x[i]);
     }
 
@@ -71,7 +71,7 @@ public static class Utils
         double[] newVals = new double[newX.Length];
         for (int i = 0; i < newX.Length; i++)
         {
-            int idx = Utils.SearchSortedLeft(oldX, newX[i]);
+            int idx = SearchSortedLeft(oldX, newX[i]);
             if (idx == 0)
             {
                 newVals[i] = oldVals[0];
@@ -94,7 +94,7 @@ public static class Utils
         double[] newVals = new double[newX.Length];
         for (int i = 0; i < newX.Length; i++)
         {
-            int idx = Utils.SearchSortedRight(oldX, newX[i]) - 1;
+            int idx = SearchSortedRight(oldX, newX[i]) - 1;
             idx = Math.Clamp(idx, 0, oldVals.Length - 1);
             newVals[i] = oldVals[idx];
         }

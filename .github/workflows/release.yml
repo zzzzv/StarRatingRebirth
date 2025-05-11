@@ -38,10 +38,15 @@ jobs:
       id: extract_version
       shell: pwsh
       run: |
-        $version = ./StarRatingRebirth.Console/bin/publish/StarRatingRebirth.Console.exe --version
-        $version = $version.Trim()
-        echo "version=$version" >> $env:GITHUB_OUTPUT
-        echo "Version extracted: $version"
+        $content = Get-Content -Path "./StarRatingRebirth.Console/StarRatingRebirth.Console.csproj" -Raw
+        if ($content -match "<Version>([^<]+)</Version>") {
+          $version = $matches[1]
+          echo "version=$version" >> $env:GITHUB_OUTPUT
+          echo "Version extracted: $version"
+        } else {
+          echo "Failed to extract version"
+          exit 1
+        }
     
     - name: Create tag
       run: |

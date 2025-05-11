@@ -1,1 +1,1 @@
-# [sunnyxxy的StarRating算法](https://github.com/sunnyxxy/Star-Rating-Rebirth) C#版
+# [sunnyxxy的osu!mania StarRating算法](https://github.com/sunnyxxy/Star-Rating-Rebirth) C#版

@@ -60,6 +60,13 @@ public class ManiaData
         return FromLines(lines);
     }
 
+    /// <summary>
+    /// Parse mania data from lines.
+    /// </summary>
+    /// <param name="lines">osu file lines</param>
+    /// <returns></returns>
+    /// <exception cref="NotSupportedException">Only mania 1-10K is supported.</exception>
+    /// <exception cref="InvalidDataException">At least 20 notes are required.</exception>
     public static ManiaData FromLines(string[] lines)
     {
         string section = "";
@@ -84,10 +91,11 @@ public class ManiaData
                     switch (key)
                     {
                         case "Mode":
-                            if (value != "3") throw new Exception("Not Mania");
+                            if (value != "3") throw new NotSupportedException("Only mania mode is supported.");
                             break;
                         case "CircleSize":
                             data.CS = int.Parse(value);
+                            if ( data.CS > 10) throw new NotSupportedException("10K+ is not supported.");
                             break;
                         case "OverallDifficulty":
                             data.OD = double.Parse(value);
@@ -104,6 +112,10 @@ public class ManiaData
                     ));
                     break;
             }
+        }
+        if (data.Notes.Count < 20)
+        {
+            throw new InvalidDataException($"Not enough notes: {data.Notes.Count}");
         }
         return data;
     }

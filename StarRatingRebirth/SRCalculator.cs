@@ -825,18 +825,4 @@ public class SRCalculator
 
         return sr;
     }
-
-    public static double Calculate(ManiaData data, string mod)
-    {
-        switch (mod.ToUpper())
-        {
-            case "DT":
-                data = data.DT();
-                break;
-            case "HT":
-                data = data.HT();
-                break;
-        }
-        return Calculate(data);
-    }
 }
