@@ -13,6 +13,7 @@ internal class Program
     {
         public required string File { get; set; }
         public int Key { get; set; }
+        public double OD { get; set; }
         public double SR { get; set; }
         public double SR_HT { get; set; }
         public double SR_DT { get; set; }
@@ -79,6 +80,7 @@ internal class Program
                 {
                     File = file,
                     Key = data.CS,
+                    OD = data.OD,
                     SR = SRCalculator.Calculate(data),
                 };
                 if (includeHTDT)

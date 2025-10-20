@@ -9,7 +9,6 @@
     <PublishSingleFile>true</PublishSingleFile>
     <SelfContained>false</SelfContained>
     <PublishReadyToRun>false</PublishReadyToRun>
-    <DebugType>none</DebugType>
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
     <PublishDir>bin\publish</PublishDir>
   </PropertyGroup>
